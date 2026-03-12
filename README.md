@@ -83,10 +83,6 @@ designlint/
 ```
 
 ---
-## Quick install
-```bash
-npx skills add rgranet/designlint-skill
-```
 
 ## Install
 

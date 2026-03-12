@@ -14,7 +14,7 @@ description: >
   mode (diagnose an existing interface against the same standards and produce an improvement
   plan). It produces design that feels human — not just different, but intentional, empathetic,
   and crafted.
-compatibility: claude-code, cursor, codex, copilot
+compatibility: claude-code, cursor, codex
 ---
 
 # DesignLint
@@ -543,16 +543,42 @@ If anything fails here — iterate. Change one decision, re-execute, re-critique
 
 Use this mode when reviewing, critiquing, or improving an existing interface. The input can be a screenshot, a URL, code (React, SwiftUI, Compose, HTML/CSS), or a description of the interface.
 
-### Step A1 — Capture What Exists
+### Step A1 — Understand the Product, Then Capture What Exists
 
-Before judging, document what the current design IS. Not what's wrong — just what's there.
+Before diagnosing anything, understand **what this product is and who it serves**. An audit that ignores context will produce irrelevant recommendations — suggesting Brutalist for a banking app, or playful microcopy for a medical tool.
+
+**First, establish the product context:**
+
+```
+/*
+ * DesignLint Audit — Product Context
+ * ───────────────────────────────────
+ * Product type:  [what is this? SaaS dashboard, mobile app, e-commerce, banking, health, creative tool…]
+ * Sector:        [what industry? fintech, healthcare, education, consumer, enterprise, luxury…]
+ * Audience:      [who uses this? age, expertise level, context of use]
+ * User state:    [what emotional state is the user in? stressed, playful, focused, impatient…]
+ * Constraints:   [what CAN'T change? brand guidelines, component library, regulatory requirements,
+ *                 existing user base expectations, accessibility mandates]
+ * What works:    [what should be PRESERVED? what is the product already doing well?]
+ */
+```
+
+**This context filters everything that follows.** A convergence finding is only a problem if it hurts this specific product. Examples:
+
+- A **banking app** using system fonts and conservative colors? That's not necessarily convergence — it might be appropriate trust signaling. The audit should flag it only if the *execution* is lazy (e.g., default padding everywhere, no typographic hierarchy), not because the palette is conservative.
+- A **creative portfolio** using Inter and a centered column? That IS convergence — this type of product lives or dies on visual distinction.
+- A **medical dashboard** using a tab bar with 5 icons? That might be the correct choice — clinicians need fast, predictable navigation under stress. The audit should evaluate whether the tab bar is *well-executed* (clear labels, appropriate grouping) rather than flagging it by default.
+- An **e-commerce app** using "Submit" on the checkout button? That's generic. But "Place order" or "Pay $42.99" respects the product context — it's specific without being cute.
+
+→ **Rule: Never recommend changes that contradict the product's sector, audience expectations, or regulatory constraints.**
+
+**Then, document what the current design IS. Not what's wrong — just what's there:**
 
 ```
 /*
  * DesignLint Audit — Current State
  * ─────────────────────────────────
  * Source:       [screenshot / code / URL / description]
- * Product:      [what is this interface for?]
  *
  * — Current UI —
  * Typography:   [what fonts, sizes, weights are used?]
@@ -563,7 +589,7 @@ Before judging, document what the current design IS. Not what's wrong — just w
  *
  * — Current UX —
  * Navigation:   [how does the user move through the product?]
- * Interactions:  [how does the user act on content?]
+ * Interactions: [how does the user act on content?]
  * Data entry:   [how does the user input information?]
  * Feedback:     [how does the system communicate state?]
  * Empty states: [what happens when there's nothing to show?]
@@ -578,6 +604,8 @@ Before judging, document what the current design IS. Not what's wrong — just w
 ### Step A2 — Convergence Diagnosis
 
 Run the existing design through every checklist. Be specific — don't just flag "generic", explain WHY and WHAT the default is.
+
+**⚠️ Context filter**: For every finding, ask: *"Is this actually a problem for THIS type of product and THIS audience?"* A finding that's valid for a creative portfolio might be irrelevant for a banking app. Flag it only if the generic choice is lazy execution, not an appropriate sector convention.
 
 **UI Convergence Scan:**
 ```
@@ -666,6 +694,9 @@ Based on the diagnosis, produce a targeted improvement plan. Don't rewrite every
  * Target score:   [Y/5 — label]
  *
  * — Context (inferred or provided) —
+ * Product:        [type + sector]
+ * Audience:       [who + expertise level]
+ * Constraints:    [what can't change]
  * User:           [who uses this — emotional state]
  * Tension:        [what tension SHOULD this design resolve?]
  *
@@ -698,11 +729,12 @@ Based on the diagnosis, produce a targeted improvement plan. Don't rewrite every
 ```
 
 **Rules for the Improvement Brief:**
+- **Respect the product.** Every recommendation must make sense for this specific product type, sector, and audience. A banking app needs trust. A health app needs calm clarity. A creative tool needs expressiveness. Recommendations that ignore context are worse than no recommendations.
 - **Be specific.** "Change the font" is useless. "Replace Inter with Libre Baskerville for display and Karla for body — it shifts the feel from generic SaaS to approachable authority" is useful.
-- **Preserve what works.** Not everything is wrong. Name what's worth keeping and why.
+- **Preserve what works.** Not everything is wrong. Name what's worth keeping and why. Some "default" choices are appropriate defaults for the sector — keep them and improve their execution instead.
 - **Prioritize.** 3 high-impact changes beat 15 minor tweaks. What moves the needle most?
-- **Include a Departure.** Even in audit mode, the result should include something original — one idea that elevates the design beyond "fixed" to "distinctive."
-- **Respect constraints.** If the design is in production with a component library, don't propose a full rewrite. Propose changes that work within the existing architecture.
+- **Include a Departure.** Even in audit mode, the result should include something original — one idea that elevates the design beyond "fixed" to "distinctive." But it must fit the product context.
+- **Respect constraints.** If the design is in production with a component library, brand guidelines, or regulatory requirements, don't propose changes that violate them. Propose improvements that work within the existing architecture.
 
 ### Step A5 — Execute (if asked)
 

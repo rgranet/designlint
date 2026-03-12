@@ -56,8 +56,6 @@ designlint/
 ├── SKILL.md                        # Core protocol (9 decisions, 5 phases)
 ├── AGENTS.md                       # Drop-in for OpenAI Codex
 ├── .cursorrules                    # Drop-in for Cursor
-├── .github/
-│   └── copilot-instructions.md     # Drop-in for GitHub Copilot
 └── references/
     ├── archetypes.md               # Design vocabulary library
     │                               #   → 8 product archetypes (Linear, Apple, Stripe, Vercel…)
@@ -103,16 +101,6 @@ Or add to your existing `.cursorrules`:
 ```
 When building any UI or UX, read and follow designlint/SKILL.md before writing code.
 Read references from designlint/references/ as directed by SKILL.md.
-```
-
-### GitHub Copilot
-
-Copy the instructions file:
-
-```bash
-mkdir -p .github
-cp designlint/.github/copilot-instructions.md .github/
-cp -r designlint/ ./designlint/
 ```
 
 ### OpenAI Codex
@@ -231,7 +219,6 @@ There's also a **Quick Start** (Express Mode) for speed: 4 decisions, one commen
 |-------|---------------|--------|
 | Claude Code | Native `.skill` install | ✅ |
 | Cursor | `.cursorrules` | ✅ |
-| GitHub Copilot | `.github/copilot-instructions.md` | ✅ |
 | OpenAI Codex | `AGENTS.md` | ✅ |
 | Windsurf | `.windsurfrules` (same format as `.cursorrules`) | ✅ |
 | Other agents | Manual system prompt | ✅ |

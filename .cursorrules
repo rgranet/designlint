@@ -1,0 +1,45 @@
+# DesignLint — Design Decision Protocol
+# Source: DesignLint v1.1 by Ruben Granet
+# https://github.com/rubengranet/designlint
+
+## MANDATORY — Before Writing Any UI/UX Code
+
+When asked to build, design, or modify any user interface — web apps, landing pages,
+dashboards, iOS screens, Android screens, React Native, or any UI component — you MUST
+complete the Design Decision Protocol BEFORE writing code.
+
+### Instructions
+
+1. Read `designlint/SKILL.md` for the full 7-decision protocol.
+2. Read `designlint/references/archetypes.md` to pick a design archetype.
+3. Read `designlint/references/ux.md` to pick a UX paradigm.
+4. Read the relevant platform reference:
+   - Web → `designlint/references/web.md`
+   - iOS → `designlint/references/ios.md`
+   - Android → `designlint/references/compose.md`
+   - React Native → `designlint/references/react-native.md`
+   - Dashboards → `designlint/references/dashboards.md`
+
+### The 7 Decisions (document in a comment block before code)
+
+1. **Aesthetic Axis** — Pick a mood (Brutalist, Editorial, Luxury, Industrial, etc.)
+2. **Typography Contract** — Pick display + body fonts. BANNED: Inter, Roboto, Arial, system-ui, DM Sans, Poppins, Space Grotesk
+3. **Color System** — 5 tokens (bg/surface/primary/accent/text). BANNED: purple gradients, default blues, generic dark mode
+4. **Spatial Grammar** — Choose: Asymmetric / Breathing room / Dense utility / Editorial bleed / Layered depth / Off-grid
+5. **Motion Character** — Choose: Snappy / Elastic / Cinematic / Mechanical / Playful / None
+6. **Signature Detail** — One memorable, unexpected UI element
+7. **UX Paradigm** — Navigation + Interaction + Data entry + Feedback + Onboarding models
+
+### Anti-Convergence Check (before delivering)
+
+- ✗ No Inter/Roboto as primary font
+- ✗ No purple/blue gradient on white
+- ✗ No centered-column-only layout
+- ✗ No tab bar with 5 generic icons
+- ✗ No modal for every action
+- ✗ No global success/error toasts
+- ✗ No 3-screen onboarding carousel
+- ✓ WCAG AA contrast on all text/bg combinations
+- ✓ Keyboard focus indicators present
+
+If any check fails, fix it before delivering code.

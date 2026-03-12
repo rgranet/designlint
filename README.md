@@ -2,7 +2,7 @@
 
 **Force distinctive, human-feeling UI/UX design before any AI agent writes code.**
 
-By [Ruben Granet](https://github.com/rubengranet) · v1.1.0 · MIT License
+By [Ruben Granet](https://github.com/rgranet) · v1.1.0 · MIT License
 
 ---
 

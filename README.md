@@ -48,6 +48,7 @@ The code that follows is intentional, auditable, and distinctive.
 ```
 designlint/
 ├── SKILL.md                        # Core protocol (7 decisions, 4 phases)
+├── AGENTS.md                       # Drop-in for OpenAI Codex
 ├── .cursorrules                    # Drop-in for Cursor
 ├── .github/
 │   └── copilot-instructions.md     # Drop-in for GitHub Copilot
@@ -108,16 +109,16 @@ cp designlint/.github/copilot-instructions.md .github/
 cp -r designlint/ ./designlint/
 ```
 
-### OpenAI Codex / Other agents
+### OpenAI Codex
 
-Add to your system prompt or instructions file:
+Copy `AGENTS.md` to your project root:
 
+```bash
+cp designlint/AGENTS.md ./
+cp -r designlint/ ./designlint/
 ```
-When building any UI or UX component, STOP before writing code.
-Read designlint/SKILL.md and complete the Design Decision Protocol.
-Read reference files from designlint/references/ as directed.
-Document all 7 decisions in a comment block before generating code.
-```
+
+Codex reads `AGENTS.md` automatically — no additional configuration needed.
 
 ### Manual (any agent)
 
@@ -195,7 +196,7 @@ There's also a **Quick Start** (Express Mode) for when you need speed: pick an a
 | Claude Code | Native `.skill` install | ✅ |
 | Cursor | `.cursorrules` | ✅ |
 | GitHub Copilot | `.github/copilot-instructions.md` | ✅ |
-| OpenAI Codex | System prompt | ✅ |
+| OpenAI Codex | `AGENTS.md` | ✅ |
 | Windsurf | `.windsurfrules` (same format as `.cursorrules`) | ✅ |
 | Other agents | Manual system prompt | ✅ |
 
